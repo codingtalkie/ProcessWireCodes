@@ -1,6 +1,21 @@
 <?php namespace ProcessWire;
 
 /**
+
+This is an update version of the file LogiRegster.module file. This file has  few changes as below 
+1. disabled the send email verification process - instead, it will ask to enter a number 414 in the registration process 
+changed line
+line number 757 -  $code = 414; // in protected function ___processConfirmation()
+line number 663 - $code = 414; // in protected function createConfirmationCode() {
+
+2. fixed the issue of showing error - Notice: Trying to get property 'name' of non-object in - when the wrong password enter with correct email 
+changed line  - 394
+added                      if($user){
+					$name = $user->name; // this line is already existed, but add the if($user) condition on top of it 
+						}
+**/
+
+/**
  * ProcessWire Login and Register Process
  *
  * ProcessWire 3.x, Copyright 2017 by Ryan Cramer
